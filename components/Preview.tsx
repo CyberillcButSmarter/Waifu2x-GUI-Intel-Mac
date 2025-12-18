@@ -1,6 +1,6 @@
 import {ipcRenderer} from "electron"
 import React, {useContext, useEffect, useState} from "react"
-import logo from "../assets/logo.png"
+import logo from "../assets/icons/logo.png"
 import {PreviewContext} from "../renderer"
 import functions from "../structures/functions"
 import "../styles/preview.less"

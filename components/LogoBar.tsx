@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from "react"
 import {AdvSettingsContext} from "../renderer"
-import logo from "../assets/logo.png"
+import logo from "../assets/icons/logo.png"
 import functions from "../structures/functions"
 import "../styles/logobar.less"
 

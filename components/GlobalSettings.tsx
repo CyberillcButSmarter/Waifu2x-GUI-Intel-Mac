@@ -1,8 +1,8 @@
 import {ipcRenderer} from "electron"
 import React, {useContext, useEffect, useState} from "react"
 import {Dropdown, DropdownButton} from "react-bootstrap"
-import checkboxChecked from "../assets/checkbox-checked.png"
-import checkbox from "../assets/checkbox.png"
+import checkboxChecked from "../assets/icons/checkbox-checked.png"
+import checkbox from "../assets/icons/checkbox.png"
 import {ModeContext, NoiseContext, ReverseContext, ScaleContext, SpeedContext, FPSMultiplierContext} from "../renderer"
 import "../styles/globalsettings.less"
 
