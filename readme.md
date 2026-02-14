@@ -1,4 +1,4 @@
-## Waifu2x GUI
+## Waifu2x GUI Intel Mac Fork
 
 <img src="assets/example.png">
 
@@ -43,7 +43,7 @@ pip3 install torch torchvision opencv-python Pillow numpy spandrel --compile --f
 
 ### Installation
 
-To install, download the latest installer from the [releases](https://github.com/Moebytes/Waifu2x-GUI/releases) tab. Updates can be installed automatically.
+To install, download the latest installer from the [releases](https://github.com/CyberillcButSmarter/Waifu2x-GUI/actions) tab. Updates can be installed automatically.
 
 Note: If you install it under `C:/Program Files` you might need to run it as administrator.
 
@@ -64,4 +64,5 @@ Open an issue on my GitHub repository. I appreciate any requests, but I can't gu
 - [waifu2x](https://github.com/nagadomi/waifu2x)
 - [real-esrgan](https://github.com/xinntao/Real-ESRGAN)
 - [real-cugan](https://github.com/bilibili/ailab)
+
 
