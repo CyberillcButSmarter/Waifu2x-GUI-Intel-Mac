@@ -43,7 +43,7 @@ pip3 install torch torchvision opencv-python Pillow numpy spandrel --compile --f
 
 ### Installation
 
-To install, download the latest installer from the [actions](https://github.com/CyberillcButSmarter/Waifu2x-GUI-Intel-Mac/actions) tab. In the file there are 2 files, one for intel macs and another for arm64. Choose the one for your arch.
+To install, download the latest installer from the [actions](https://github.com/CyberillcButSmarter/Waifu2x-GUI-Intel-Mac/actions) tab. In the artifact there are 2 files, one for intel macs (that's the one that doesn't have arm64 at the end of its name) and another for arm64. Choose the one for your arch.
 
 Note: If you install it under `C:/Program Files` you might need to run it as administrator.
 
@@ -64,6 +64,7 @@ Open an issue on my GitHub repository. I appreciate any requests, but I can't gu
 - [waifu2x](https://github.com/nagadomi/waifu2x)
 - [real-esrgan](https://github.com/xinntao/Real-ESRGAN)
 - [real-cugan](https://github.com/bilibili/ailab)
+
 
 
 
