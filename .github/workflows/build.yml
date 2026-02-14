@@ -23,10 +23,10 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-13, windows-latest, ubuntu-latest]
+        os: [macos-latest, windows-latest, ubuntu-latest]
         include:
-          - os: macos-13   # Intel runner
-            runner: macos-13
+          - os: macos-latest
+            runner: macos-latest
             platform: darwin
           - os: windows-latest
             runner: windows-latest
@@ -51,13 +51,22 @@ jobs:
       - name: Rebuild native modules
         run: npm run rebuild
 
+      # 🔥 Force macOS x64 (Intel)
       - name: Build macOS x64
         if: runner.os == 'macOS'
         run: npm run build -- --mac --x64
 
+      # Windows + Linux normal build
       - name: Build Windows/Linux
         if: runner.os != 'macOS'
         run: npm run build
+
+      # Optional: verify architecture
+      - name: Verify macOS architecture
+        if: runner.os == 'macOS'
+        run: |
+          echo "Checking binary architecture..."
+          file build/*.app/Contents/MacOS/* || true
 
       - name: Replace spaces
         shell: bash
@@ -94,8 +103,9 @@ jobs:
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.ARTIFACT_PREFIX }}-linux
+          name: ${{ env.APP_NAME }}-linux
           path: |
             build/${{ env.APP_NAME }}-*.AppImage
             build/${{ env.APP_NAME }}-*.AppImage.blockmap
             build/latest-linux.yml
+
