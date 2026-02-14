@@ -18,15 +18,15 @@ permissions:
 
 jobs:
   build-and-deploy:
-    name: Build on ${{matrix.os}}
-    runs-on: ${{matrix.runner}}
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.runner }}
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [macos-13, windows-latest, ubuntu-latest]
         include:
-          - os: macos-latest
-            runner: macos-latest
+          - os: macos-13   # Intel runner
+            runner: macos-13
             platform: darwin
           - os: windows-latest
             runner: windows-latest
@@ -51,7 +51,12 @@ jobs:
       - name: Rebuild native modules
         run: npm run rebuild
 
-      - name: Build app
+      - name: Build macOS x64
+        if: runner.os == 'macOS'
+        run: npm run build -- --mac --x64
+
+      - name: Build Windows/Linux
+        if: runner.os != 'macOS'
         run: npm run build
 
       - name: Replace spaces
@@ -69,28 +74,28 @@ jobs:
         if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{env.ARTIFACT_PREFIX}}-mac
+          name: ${{ env.ARTIFACT_PREFIX }}-mac
           path: |
-            build/${{env.APP_NAME}}-*.dmg
-            build/${{env.APP_NAME}}-*.dmg.blockmap
+            build/${{ env.APP_NAME }}-*.dmg
+            build/${{ env.APP_NAME }}-*.dmg.blockmap
             build/latest-mac.yml
 
       - name: Upload Windows
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{env.ARTIFACT_PREFIX}}-win
+          name: ${{ env.ARTIFACT_PREFIX }}-win
           path: |
-            build/${{env.APP_NAME}}-*.exe
-            build/${{env.APP_NAME}}-*.exe.blockmap
+            build/${{ env.APP_NAME }}-*.exe
+            build/${{ env.APP_NAME }}-*.exe.blockmap
             build/latest.yml
 
       - name: Upload Linux
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{env.ARTIFACT_PREFIX}}-linux
+          name: ${{ env.ARTIFACT_PREFIX }}-linux
           path: |
-            build/${{env.APP_NAME}}-*.AppImage
-            build/${{env.APP_NAME}}-*.AppImage.blockmap
+            build/${{ env.APP_NAME }}-*.AppImage
+            build/${{ env.APP_NAME }}-*.AppImage.blockmap
             build/latest-linux.yml
