@@ -5,9 +5,9 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "npm run clean && webpack && cross-env DEVELOPMENT=true electron dist/main.js",
-    "clean": "del-cli ./dist",
-    "build": "npm run clean ./build && webpack && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder -p never",
-    "rebuild": "electron-rebuild -f -w @napi-rs/canvas"
+    "clean": "del-cli ./dist ./build",
+    "build": "npm run clean && webpack && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder -p never",
+    "rebuild": "electron-rebuild -f -w sharp -w @napi-rs/canvas"
   },
   "keywords": [
     "waifu2x",
@@ -29,10 +29,7 @@
     },
     "buildDependenciesFromSource": true,
     "mac": {
-      "target": {
-        "target": "dmg",
-        "arch": "arm64"
-      },
+      "target": "dmg",
       "category": "public.app-category.utilities",
       "extraFiles": [
         "ffmpeg/ffmpeg.app",
@@ -104,7 +101,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "del-cli": "^3.0.1",
-    "electron": "^22.3.27",
+    "electron": "^28.3.3",
     "electron-builder": "^24.9.1",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^6.1.0",
@@ -136,3 +133,5 @@
     "waifu2x": "^1.5.2"
   }
 }
+
+
